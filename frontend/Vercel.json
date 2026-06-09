@@ -1,0 +1,15 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand":   "npm run dev",
+  "installCommand": "npm install",
+  "rewrites": [
+    {
+      "source": "/api/backend/:path*",
+      "destination": "https://your-app.onrender.com/:path*"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_API_URL": "@emnist_api_url"
+  }
+}
