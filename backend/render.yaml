@@ -1,0 +1,27 @@
+# render.yaml
+# Render Blueprint — deploys the backend as a Docker web service.
+# https://render.com/docs/blueprint-spec
+#
+# Usage: Connect your GitHub repo on render.com → "New Blueprint"
+
+services:
+  - type: web
+    name: neural-ink-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+
+    # Render free tier: 512 MB RAM, 0.1 CPU (spun down after 15 min inactivity)
+    plan: free
+
+    healthCheckPath: /health
+
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false           # Set this manually in the Render dashboard — never commit the key
+
+      - key: CLAUDE_MODEL
+        value: claude-haiku-4-5-20251001   # Swap to claude-sonnet-4-6 for higher accuracy
+
+      - key: ALLOWED_ORIGINS
+        sync: false           # Set to your Vercel URL, e.g. https://your-app.vercel.app
