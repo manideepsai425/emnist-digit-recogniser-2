@@ -33,8 +33,6 @@ async function post<T>(path: string, body: unknown): Promise<T> {
     method:  "POST",
     headers: { "Content-Type": "application/json" },
     body:    JSON.stringify(body),
-    // Keep-alive for repeated predictions in the same session
-    // @ts-expect-error — Next.js fetch extension
     next: { revalidate: 0 },
   });
 
