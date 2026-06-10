@@ -1,37 +1,10 @@
 // app/page.tsx — Server Component
 // The page shell is fully static/SSR; DrawingInterface is the only client island.
 
-import dynamic from "next/dynamic";
 import { Brain, Github, Layers, Database, Zap, Clock } from "lucide-react";
 import GitHubStyleCard from "@/components/GitHubStyleCard";
 import ModelInfoCard from "@/components/ModelInfoCard";
-
-// Lazy-load the interactive island — canvas requires browser APIs (no SSR)
-const DrawingInterface = dynamic(
-  () => import("@/components/DrawingInterface"),
-  {
-    ssr:     false,
-    loading: () => <DrawingInterfaceSkeleton />,
-  }
-);
-
-// ── Skeleton ─────────────────────────────────────────────────────────────────
-function DrawingInterfaceSkeleton() {
-  return (
-    <div className="border border-[#d1d9e0] rounded-lg bg-white overflow-hidden">
-      <div className="px-4 py-3 border-b border-[#d1d9e0] bg-[#f6f8fa]">
-        <div className="h-4 w-32 skeleton rounded" />
-      </div>
-      <div className="p-5 flex flex-col items-center gap-4">
-        <div className="w-[280px] h-[280px] skeleton rounded-md" />
-        <div className="flex gap-2 w-full max-w-[280px]">
-          <div className="h-8 flex-1 skeleton rounded-md" />
-          <div className="h-8 flex-1 skeleton rounded-md" />
-        </div>
-      </div>
-    </div>
-  );
-}
+import DrawingInterface from "@/components/DrawingInterfaceClient";
 
 // ── Static data (rendered server-side, zero client JS) ────────────────────────
 const MODEL_INFO = {
