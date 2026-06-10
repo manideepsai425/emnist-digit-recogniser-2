@@ -55,7 +55,7 @@ async function post<T>(path: string, body: unknown): Promise<T> {
  * digit classification. Returns top-5 predictions with confidence scores.
  */
 export async function predictDigit(base64Png: string): Promise<PredictResponse> {
-  return post<PredictResponse>("/predict", { image: base64Png });
+  return post<PredictResponse>("/api/predict", { image: base64Png });
 }
 
 /**
