@@ -3,7 +3,7 @@
 // All requests use the env var NEXT_PUBLIC_API_URL as the base.
 // ---------------------------------------------------------------------------
 
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const BASE = process.env.NEXT_PUBLIC_API_URL ?? "https://emnist-digit-recogniser-27.onrender.com";
 
 // ── Types ───────────────────────────────────────────────────────────────────
 
