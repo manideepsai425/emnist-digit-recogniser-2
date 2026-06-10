@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/api/backend/:path*",
-      "destination": "https://your-app.onrender.com/:path*"
+      "destination": "https://emnist-digit-recogniser-2.onrender.com/:path*"
     }
   ],
   "env": {
